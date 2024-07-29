@@ -1,0 +1,25 @@
+
+
+<h1 class="text-center font-bold text-3xl m-4 text-green-600">Products</h1>
+
+<section>
+    <div class="container p-3">
+        <input type="text" class=" border-2 border-green-600 mb-11" [(ngModel)]="proName" placeholder=" search by title">
+        <!-- <p>{{proName}}</p> -->
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            @for(product of products ; track $index){
+                <div class="border-green-700 border-2 p-2">
+                    <img [src]="product.imageUrl" class="w-full h-3/4" alt=" product image ">
+                    <h3 [class]="product.name.toLowerCase().includes(proName.toLowerCase()) && proName !='' ?'bg-green-500 p-1': ''" >Title : {{product.name}}</h3>
+                    <h4>Price: {{product.price}} </h4>
+                    <span [class]="product.onSale?'bg-green-500 p-1': 'bg-gray-500 p-1' "  >Sale: {{product.onSale?'Yes':'No'}}</span>
+                </div>
+            }
+            @empty {
+                <div class="border-green-700 border-2 p-2">
+                   <h2> No Data to display </h2>
+                </div>
+            }
+        </div>
+    </div>
+</section>
